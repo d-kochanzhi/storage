@@ -1,6 +1,6 @@
 {
   "name": "ttl-storage",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "localStorage/sessionStorage with expiration lifetime",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",

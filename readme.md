@@ -23,6 +23,14 @@ let ttlLocalStorage = new useStorage({}, window.localStorage);
 let ttlSessionStorage = new useStorage({}, window.sessionStorage);
 
 ```
+## props
+
+```
+{ 
+  prefix: 'mycustom_', //prefix to save values in storage, by default is 'pre_'
+  maxage: 60  // maximum time to live cached data in seconds,  by default is '24 * 3600' = 1 day
+}
+```
 
 you can store any type of items in store. However objects will store as serialized string.
 

@@ -8,7 +8,7 @@ import { expect } from 'chai';
 let storage;
 
 beforeEach(function () {
-  storage = new useStorage({}, new mockStorage());
+  storage = new useStorage({ prefix: 'mycustom_' }, new mockStorage());
   storage.clear();
 });
 

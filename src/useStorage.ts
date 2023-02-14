@@ -10,16 +10,9 @@ export type StorageOptions = {
 
 export default class useStorage {
   private options: StorageOptions;
-  private storage: Storage;
 
-  constructor(options = {}, storage = window.localStorage) {
-    this.options = {
-      prefix: 'pre_',
-      maxage: 24 * 3600, //24 hours (seconds)
-      ...options,
-    };
-
-    this.storage = storage;
+  constructor(options: StorageOptions, public storage = window.localStorage) {
+    this.options = { ...{ prefix: 'pre_', maxage: 24 * 3600 }, ...options };
   }
 
   private _prepareValue<T>(value: T): StampedValue<T> {
@@ -112,7 +105,7 @@ export default class useStorage {
     const stored = this._get<T>(key);
 
     const callbackResolver = function callbackResolver(): Promise<T> {
-      let callbackResult: any;
+      let callbackResult: unknown;
       if (typeof callback === 'function') {
         callbackResult = callback();
       } else callbackResult = callback;
@@ -129,7 +122,7 @@ export default class useStorage {
       }
 
       return new Promise(function (resolve) {
-        resolve(self.set<T>(key, callbackResult));
+        resolve(self.set<T>(key, callbackResult as T));
       });
     };
 
